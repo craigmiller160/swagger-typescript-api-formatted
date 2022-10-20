@@ -67,7 +67,7 @@ const formatOutput = (res: GenerateApiOutput) =>
 
 const OUTPUT_PATH = path.join(process.cwd(), 'src', 'types', 'generated');
 
-const doGenerateApi = (name: string, url: string): Promise<unknown> => generateApi({
+export const doGenerateApi = (name: string, url: string): Promise<unknown> => generateApi({
     name,
     url,
     generateClient: false
