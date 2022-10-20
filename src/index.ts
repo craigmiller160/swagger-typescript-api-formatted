@@ -1,6 +1,18 @@
 /* eslint-disable no-console */
-import { generateApi } from 'swagger-typescript-api';
+import { generateApi, GenerateApiOutput, ModelType, SchemaTypePrimitiveContent } from 'swagger-typescript-api';
 import path from 'path';
+
+type Properties = Record<string, {
+    name?: string;
+    type: string;
+    required: boolean;
+    $parsed?: SchemaTypePrimitiveContent;
+}>
+
+type ExtendedModelType = ModelType & {
+    readonly properties: Properties;
+    readonly required: ReadonlyArray<string>;
+}
 
 const ARRAY_PATTERN = /^\((?<arrayType>.*)\)\[\]$/;
 
@@ -12,14 +24,14 @@ const formatDataType = (details) => {
     const parsedType = details.$parsed.content;
 
     if (ARRAY_PATTERN.test(parsedType)) {
-        const arrayType = ARRAY_PATTERN.exec(parsedType).groups.arrayType;
+        const arrayType = ARRAY_PATTERN.exec(parsedType)?.groups?.arrayType;
         return `ReadonlyArray<${arrayType}>`;
     }
 
     return parsedType;
 };
 
-const formatProperties = (properties, required) => {
+const formatProperties = (properties: Properties, required) => {
     if (!properties) {
         return '';
     }
@@ -34,27 +46,25 @@ const formatProperties = (properties, required) => {
         .join('\n\t');
 };
 
-const formatType = (type) => {
+const formatType = (type: ExtendedModelType) => {
     const properties = formatProperties(type.properties, type.required);
     return `export type ${type.name} = {
 	${properties}
 };`;
 };
 
-const formatOutput = (res) =>
-    res.configuration.modelTypes
+const formatOutput = (res: GenerateApiOutput) =>
+    (res.configuration.modelTypes as ExtendedModelType[])
         .filter((type) => type.name !== 'Unit')
         .map(formatType)
         .join('\n\n');
 
 const OUTPUT_PATH = path.join(process.cwd(), 'src', 'types', 'generated');
 
-generateApi({
-    name: 'expense-tracker',
-    url: 'https://127.0.0.1:8080/v3/api-docs',
-    prettier: true,
-    generateClient: false,
-    sortTypes: true
+const doGenerateApi = (name: string, url: string): Promise<unknown> => generateApi({
+    name,
+    url,
+    generateClient: false
 })
     .then((res) => {
         const newOutput = formatOutput(res);
