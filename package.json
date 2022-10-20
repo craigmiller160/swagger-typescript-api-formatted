@@ -1,0 +1,9 @@
+{
+  "name": "@craigmiller160/swagger-typescript-api-formatted",
+  "version": "1.0.0-beta",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "swagger-typescript-api": "^10.0.2"
+  }
+}
