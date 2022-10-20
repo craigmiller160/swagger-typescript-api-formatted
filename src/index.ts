@@ -2,12 +2,15 @@
 import { generateApi, GenerateApiOutput, ModelType, SchemaTypePrimitiveContent } from 'swagger-typescript-api';
 import path from 'path';
 
-type Properties = Record<string, {
-    name?: string;
-    type: string;
-    required: boolean;
-    $parsed?: SchemaTypePrimitiveContent;
-}>
+type PropertyDetails = {
+    readonly name?: string;
+    readonly type: string;
+    readonly required: boolean;
+    readonly enum?: ReadonlyArray<string>;
+    readonly $parsed?: SchemaTypePrimitiveContent;
+};
+
+type Properties = Record<string, PropertyDetails>
 
 type ExtendedModelType = ModelType & {
     readonly properties: Properties;
@@ -16,12 +19,15 @@ type ExtendedModelType = ModelType & {
 
 const ARRAY_PATTERN = /^\((?<arrayType>.*)\)\[\]$/;
 
-const formatDataType = (details) => {
+const formatDataType = (details: PropertyDetails): string => {
     if (details.enum) {
         return details.enum.map((value) => `'${value}'`).join(' | ');
     }
 
-    const parsedType = details.$parsed.content;
+    const parsedType = details.$parsed?.content;
+    if (!parsedType) {
+        return '';
+    }
 
     if (ARRAY_PATTERN.test(parsedType)) {
         const arrayType = ARRAY_PATTERN.exec(parsedType)?.groups?.arrayType;
@@ -31,7 +37,7 @@ const formatDataType = (details) => {
     return parsedType;
 };
 
-const formatProperties = (properties: Properties, required) => {
+const formatProperties = (properties: Properties, required: ReadonlyArray<string>) => {
     if (!properties) {
         return '';
     }
