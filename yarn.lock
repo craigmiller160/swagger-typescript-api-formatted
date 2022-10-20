@@ -28,6 +28,11 @@
   resolved "https://nexus-craigmiller160.ddns.net/repository/npm-group/@exodus/schemasafe/-/schemasafe-1.0.0-rc.9.tgz#56b9c6df627190f2dcda15f81f25d68826d9be4d"
   integrity sha512-dGGHpb61hLwifAu7sotuHFDBw6GTdpG8aKC0fsK17EuTzMRvUrH7lEAr6LTJ+sx3AZYed9yZ77rltVDHyg2hRg==
 
+"@types/node@^18.11.3":
+  version "18.11.3"
+  resolved "https://nexus-craigmiller160.ddns.net/repository/npm-group/@types/node/-/node-18.11.3.tgz#78a6d7ec962b596fc2d2ec102c4dd3ef073fea6a"
+  integrity sha512-fNjDQzzOsZeKZu5NATgXUPsaFaTxeRgFXoosrHivTl8RGeV733OLawXsGfEk9a8/tySyZUyiZ6E8LcjPFZ2y1A==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://nexus-craigmiller160.ddns.net/repository/npm-group/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"

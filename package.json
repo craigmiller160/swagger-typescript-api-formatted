@@ -5,5 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "swagger-typescript-api": "^10.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.3"
   }
 }
