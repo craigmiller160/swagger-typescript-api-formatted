@@ -9,7 +9,8 @@
     "craig-swagger": "./bin/craig-swagger.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "yarn lint && yarn forceBuild",
+    "forceBuild": "tsc",
     "lint": "craig-lint",
     "prepare": "husky install"
   },
