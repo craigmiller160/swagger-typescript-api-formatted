@@ -4,6 +4,9 @@
   "bin": {
     "craig-swagger": "./bin/craig-swagger.js"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "files": [
     "./lib",
     "./bin"
