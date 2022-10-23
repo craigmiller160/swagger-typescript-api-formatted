@@ -5,12 +5,17 @@
     "craig-swagger": "./bin/craig-swagger.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "craig-lint",
+    "prepare": "husky install"
   },
   "files": [
     "./lib",
     "./bin"
   ],
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix --max-warnings=0"
+  },
   "dependencies": {
     "swagger-typescript-api": "^10.0.2"
   },
@@ -19,6 +24,8 @@
     "@craigmiller160/eslint-config-prettier": "^1.0.0",
     "@craigmiller160/eslint-config-ts": "^1.1.0-beta.2.1",
     "@craigmiller160/prettier-config": "^1.0.0",
-    "@types/node": "^18.11.3"
+    "@types/node": "^18.11.3",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3"
   }
 }
