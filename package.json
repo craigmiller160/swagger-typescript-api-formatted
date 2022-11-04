@@ -25,10 +25,10 @@
     "swagger-typescript-api": "^10.0.2"
   },
   "devDependencies": {
-    "@craigmiller160/eslint-config-js": "^1.0.0",
-    "@craigmiller160/eslint-config-prettier": "^1.0.0",
-    "@craigmiller160/eslint-config-ts": "^1.1.0-beta.2.1",
-    "@craigmiller160/prettier-config": "^1.0.0",
+    "@craigmiller160/eslint-config-js": "^1.0.1",
+    "@craigmiller160/eslint-config-prettier": "^1.0.1",
+    "@craigmiller160/eslint-config-ts": "^1.1.0-beta",
+    "@craigmiller160/prettier-config": "^1.0.1",
     "@types/node": "^18.11.3",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
