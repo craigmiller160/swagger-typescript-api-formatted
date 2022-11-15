@@ -39,10 +39,10 @@
     eslint-config-prettier "^8.3.0"
     eslint-plugin-prettier "^4.0.0"
 
-"@craigmiller160/eslint-config-ts@^1.1.0-beta":
-  version "1.1.0-beta.1"
-  resolved "https://nexus-craigmiller160.ddns.net/repository/npm-group/@craigmiller160/eslint-config-ts/-/eslint-config-ts-1.1.0-beta.1.tgz#e3ee010d2e4a1bef6f859fd5bfef2a34b1d259f2"
-  integrity sha512-k8Hu6F2sf5xDYUsvaJNKB5aWr8I7prk5Tm+NCDcvFhvGx3FjhmUdMn8kjdLNUZJl+cobKUsh7Ur+DWa/oINxtA==
+"@craigmiller160/eslint-config-ts@1.1.0":
+  version "1.1.0"
+  resolved "https://nexus-craigmiller160.ddns.net/repository/npm-group/@craigmiller160/eslint-config-ts/-/eslint-config-ts-1.1.0.tgz#2dd06a85641e7f0a3e48f1d9f2f1ee42694a3168"
+  integrity sha512-zOLe4/Qwm2aag/8ATwAOmiHNlpbtUKfVr22Gcfi7i4Ye/18bHUE8NkRbyeUYqWcSWojNZoBvBXPd5BtZG8rGXw==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.40.1"
     "@typescript-eslint/parser" "^5.40.1"
