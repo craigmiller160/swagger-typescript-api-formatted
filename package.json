@@ -1,6 +1,6 @@
 {
   "name": "@craigmiller160/swagger-typescript-api-formatted",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "sideEffects": false,
   "publishConfig": {
     "registry": "https://nexus-craigmiller160.ddns.net/repository/npm-private/"

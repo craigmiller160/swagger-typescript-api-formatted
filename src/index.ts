@@ -6,6 +6,7 @@ import {
 	SchemaTypePrimitiveContent
 } from 'swagger-typescript-api';
 import path from 'path';
+import fs from 'fs';
 
 type PropertyDetails = {
 	readonly name?: string;
@@ -73,12 +74,23 @@ const formatOutput = (res: GenerateApiOutput) =>
 		.map(formatType)
 		.join('\n\n');
 
+const ensureOutputFileExists = (outputFile: string) => {
+	if (!fs.existsSync(path.dirname(outputFile))) {
+		fs.mkdirSync(path.dirname(outputFile));
+	}
+
+	if (!fs.existsSync(outputFile)) {
+		fs.writeFileSync(outputFile, '');
+	}
+};
+
 export const doGenerateApi = (
 	name: string,
 	url: string,
 	outputFile: string
-): Promise<unknown> =>
-	generateApi({
+): Promise<unknown> => {
+	ensureOutputFileExists(outputFile);
+	return generateApi({
 		name,
 		url,
 		generateClient: false
@@ -93,3 +105,4 @@ export const doGenerateApi = (
 			console.log('API types successfully generated');
 		})
 		.catch((ex) => console.error('Error generating API types', ex));
+};
