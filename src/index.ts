@@ -98,7 +98,7 @@ export const doGenerateApi = (
 		.then((res) => {
 			const newOutput = formatOutput(res);
 			res.createFile({
-				path: path.dirname(outputFile),
+				path: path.resolve(process.cwd(), path.dirname(outputFile)),
 				fileName: path.basename(outputFile),
 				content: newOutput
 			});
