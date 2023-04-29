@@ -73,9 +73,11 @@ const formatOutput = (res: GenerateApiOutput) =>
 		.map(formatType)
 		.join('\n\n');
 
-const OUTPUT_PATH = path.join(process.cwd(), 'src', 'types', 'generated');
-
-export const doGenerateApi = (name: string, url: string): Promise<unknown> =>
+export const doGenerateApi = (
+	name: string,
+	url: string,
+	outputFile: string
+): Promise<unknown> =>
 	generateApi({
 		name,
 		url,
@@ -84,8 +86,8 @@ export const doGenerateApi = (name: string, url: string): Promise<unknown> =>
 		.then((res) => {
 			const newOutput = formatOutput(res);
 			res.createFile({
-				path: OUTPUT_PATH,
-				fileName: 'expense-tracker.ts',
+				path: path.dirname(outputFile),
+				fileName: path.basename(outputFile),
 				content: newOutput
 			});
 			console.log('API types successfully generated');
